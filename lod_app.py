@@ -4,6 +4,7 @@ from flask import Flask
 from flask_mongoengine import MongoEngine
 from flask_swagger_ui import get_swaggerui_blueprint
 
+from db_init import initDB
 from routes import api
 
 app = Flask(__name__)
@@ -32,4 +33,5 @@ db_client = MongoEngine()
 db_client.init_app(app)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    initDB()
+    app.run()

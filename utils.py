@@ -2,8 +2,7 @@ from data_models import LocationData
 
 
 def get_location(location_json_data):
-    continent = location_json_data['continent'] if \
-        'continent' in location_json_data else ''
+    continent = location_json_data['continent']
     country = location_json_data['country'] if \
         'country' in location_json_data else ''
     state = location_json_data['state'] if \
