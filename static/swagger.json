@@ -1,0 +1,144 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Petstore",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:5000/"
+    }
+  ],
+  "paths": {
+    "/locations/fetch": {
+      "post": {
+        "summary": "List of all locations and the likes and dislikes recieved for each of them respectively",
+        "responses": {
+          "200": {
+            "description": "A list of locations with their like or dislike data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/schemas/LocationData"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/locations/like": {
+      "post": {
+        "summary": "Add a like to the specified location",
+        "responses": {
+          "200": {
+            "description": "A like was successfully added for the specified location",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/schemas/LocationData"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/locations/dislike": {
+      "post": {
+        "summary": "Add a dislike to the specified location",
+        "responses": {
+          "200": {
+            "description": "A dislike was successfully added for the specified location",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/schemas/LocationData"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LocationsData": {
+        "type": "object",
+        "required": [
+          "continent"
+        ],
+        "properties": {
+          "continent": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "likes": {
+            "type": "integer"
+          },
+          "dislikes": {
+            "type": "integer"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
